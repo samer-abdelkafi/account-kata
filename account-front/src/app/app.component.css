@@ -1,0 +1,7 @@
+.bank-kata-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 16px auto;
+  display: flex;
+
+}

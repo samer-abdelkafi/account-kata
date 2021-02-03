@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span>Bank account kata</span>
+</mat-toolbar>
+
+<nav mat-tab-nav-bar>
+  <a mat-tab-link routerLink="/history"
+     routerLinkActive #hist="routerLinkActive"
+     [active]="hist.isActive">History</a>
+  <a mat-tab-link routerLink="/operation"
+     routerLinkActive #op="routerLinkActive"
+     [active]="op.isActive">Deposit</a>
+</nav>
+
+<div class="bank-kata-container">
+<router-outlet></router-outlet>
+</div>
