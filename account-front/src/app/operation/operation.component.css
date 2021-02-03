@@ -1,0 +1,15 @@
+.acc_button {
+  margin: 16px;
+}
+
+.acc_message {
+  padding: 16px;
+  color: green;
+  border: 1px solid green;
+  border-radius: 3px;
+  display: block;
+}
+
+.acc_input {
+  width: 100%;
+}

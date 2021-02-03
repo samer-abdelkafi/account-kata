@@ -1,0 +1,30 @@
+<h1>Your current account operations history</h1>
+
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Debit</th>
+    <th>Credit</th>
+  </tr>
+  <tr *ngFor="let operation  of operations">
+    <td>#{{operation.id}}</td>
+    <td>{{operation.dateOperation | date : 'dd/MM/yyyy'}}</td>
+    <td>{{operation.type === 'DEBIT' ? operation.amount: ''}}</td>
+    <td>{{operation.type === 'CREDIT' ? operation.amount: ''}}</td>
+  </tr>
+
+  <tr *ngIf="!operations.length">
+    <td colspan="3" style="line-height: 32px"><i>No operation</i></td>
+  </tr>
+
+  <tr>
+    <td><b>Balance</b></td>
+    <td colspan="3">{{balance}}</td>
+  </tr>
+
+</table>
+
+
+

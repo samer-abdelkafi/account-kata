@@ -1,0 +1,22 @@
+<h1>Operation</h1>
+
+<span *ngIf="done" class="acc_message">Operation done</span>
+
+
+<form [formGroup]="operationForm" >
+  <p>
+    <mat-form-field appearance="outline" class="acc_input">
+      <mat-label>Amount</mat-label>
+      <input matInput formControlName="amount" type="number" required>
+    </mat-form-field>
+  </p>
+
+  <button mat-button type="button" mat-raised-button
+          [disabled]="operationForm.invalid"
+          (click)="withdrawal()"
+          class="acc_button">Withdrawal</button>
+  <button mat-button type="button" mat-raised-button color="primary"
+          [disabled]="operationForm.invalid"
+          (click)="deposit()"
+          class="acc_button">Deposit</button>
+</form>
