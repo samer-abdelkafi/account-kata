@@ -4,10 +4,20 @@
 
 .acc_message {
   padding: 16px;
-  color: green;
-  border: 1px solid green;
+  border: 1px solid;
   border-radius: 3px;
   display: block;
+}
+
+.acc_message_success {
+  color: green;
+  border-color: green;
+}
+
+
+.acc_message_error {
+  color: red;
+  border-color: red;
 }
 
 .acc_input {

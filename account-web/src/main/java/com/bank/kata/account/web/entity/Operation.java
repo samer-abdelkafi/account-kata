@@ -1,5 +1,6 @@
 package com.bank.kata.account.web.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +27,7 @@ public class Operation {
 	@Column(name = "DATE_OPERATION")
 	private Date dateOperation;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "ACCOUNT_ID")
 	private Account account;

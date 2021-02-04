@@ -3,6 +3,8 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {HistoryComponent} from './history.component';
 import {AccountService} from '../shared/service/account.service';
 import {Operation} from '../shared/model/operation';
+import {Account} from '../shared/model/account';
+
 import {of} from 'rxjs';
 
 describe('HistoryComponent', () => {
@@ -10,10 +12,12 @@ describe('HistoryComponent', () => {
   let fixture: ComponentFixture<HistoryComponent>;
   let accountServiceSpy: jasmine.SpyObj<AccountService>;
 
-  const operations  = [
+  const operations = [
     new Operation(1, -10, new Date(), 'DEBIT'),
     new Operation(1, 10, new Date(), 'CREDIT')
   ];
+
+  const account = new Account(1, 'current account', 0);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -22,7 +26,7 @@ describe('HistoryComponent', () => {
         {
           provide: AccountService,
           useValue: jasmine.createSpyObj('AccountService',
-            ['getOperation'])
+            ['getOperation', 'getAccount'])
         }
       ]
     })
@@ -30,6 +34,7 @@ describe('HistoryComponent', () => {
 
     accountServiceSpy = TestBed.inject(AccountService) as jasmine.SpyObj<AccountService>;
     accountServiceSpy.getOperation.and.returnValue(of(operations));
+    accountServiceSpy.getAccount.and.returnValue(of(account));
   });
 
   beforeEach(() => {
@@ -45,5 +50,6 @@ describe('HistoryComponent', () => {
 
   it('should display operation history', () => {
     expect(component.operations).toEqual(operations);
+    expect(component.account).toEqual(account);
   });
 });

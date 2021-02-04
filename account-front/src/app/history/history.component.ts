@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from '../shared/service/account.service';
 import {Operation} from '../shared/model/operation';
+import {Account} from '../shared/model/account';
 
 
 @Component({
@@ -11,24 +12,18 @@ import {Operation} from '../shared/model/operation';
 export class HistoryComponent implements OnInit {
 
   private accountId = 1;
-
-  balance = 0;
-
   operations: Operation[] = [];
+  account: Account;
 
   constructor(private accountService: AccountService) {
   }
 
   ngOnInit(): void {
     this.accountService.getOperation(this.accountId)
-      .subscribe(response => {
-        this.operations = response;
-        if(response[0] && response[0].amount) {
-          this.balance = response[0]?.amount;
-        } else {
-          this.balance = 0;
-        }
-      });
+      .subscribe(response => this.operations = response);
+
+    this.accountService.getAccount(this.accountId)
+      .subscribe(response => this.account = response);
   }
 
 }

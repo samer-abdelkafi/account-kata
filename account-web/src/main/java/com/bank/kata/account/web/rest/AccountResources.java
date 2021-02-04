@@ -21,7 +21,13 @@ public class AccountResources {
         return accountService.getAccounts();
     }
 
+
     @GetMapping("/{id}")
+    public Account getAccount(@PathVariable long id) {
+        return accountService.getAccountById(id);
+    }
+
+    @GetMapping("/{id}/operations")
     public Set<Operation> getOpperation(@PathVariable long id) {
         return accountService.getOperations(id);
     }

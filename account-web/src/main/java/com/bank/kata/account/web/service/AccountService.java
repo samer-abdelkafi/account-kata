@@ -56,4 +56,9 @@ public class AccountService {
         return new HashSet<>(accountRepo.findAll());
     }
 
+
+    public Account getAccountById(long id) {
+        return accountRepo.findById(id).orElseThrow(NotFoundException::new);
+    }
+
 }

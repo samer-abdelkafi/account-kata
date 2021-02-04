@@ -1,7 +1,8 @@
 <h1>Operation</h1>
 
-<span *ngIf="done" class="acc_message">Operation done</span>
+<span *ngIf="done" class="acc_message acc_message_success">Operation done</span>
 
+<span *ngIf="error" class="acc_message acc_message_error">Operation failed !</span>
 
 <form [formGroup]="operationForm" >
   <p>

@@ -30,14 +30,14 @@ describe('AccountService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be created', () => {
+  it('should get operations', () => {
 
     service.getOperation(1).subscribe(operations => {
       expect(operations.length).toBe(2);
       expect(operations).toEqual(operations);
     });
 
-    const req = httpMock.expectOne('/api/accounts/1');
+    const req = httpMock.expectOne('/api/accounts/1/operations');
     expect(req.request.method).toBe("GET");
     req.flush(operations);
 
